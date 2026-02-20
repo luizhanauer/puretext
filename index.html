@@ -1,60 +1,14 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title>No Special Characters</title>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js"></script>
-	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
-	<link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
-</head>
-<body class="bg-gray-300">
-	<div class="grid grid-cols-1 lg:grid-cols-2">
-		<div class="bg-gray-900 lg:min-h-screen lg:flex lg:items-center p-6 sm:p-12">
-			<div class="flex-grow">
-				<h1 class="text-white text-center text-2xl sm:text-5xl mb-2"> NSC - No Special Characters:</h1><br>
-				<li class="text-white text-2xl sm:text-3xl mb-2">Remoção de caracteres especiais</li>
-			</div>
-		</div>
-		<div class="lg:min-h-screen lg:flex lg:items-center p-12 lg:p-24 xl:p-48">
-			<div class="flex-grow bg-white shadow-xl rounded-md border border-gray-300 p-8">
-				<label class="font-bold text-gray-500">Entrada</label>
-				<div class="flex items-center grid">
-					<div class="relative">
-						<textarea class="h-36 pl-2 pr-20 rounded-lg z-0 focus:shadow focus:outline-none border bg-gray-50 w-full" id="entrada" name="entrada" onkeyup="inputInit();"></textarea>
-					</div>
-				</div>
-				<label class="font-bold text-gray-500">Substituido</label>
-				<div class="flex items-center grid">
-					<div class="relative">
-						<textarea class="h-36 pl-2 pr-20 rounded-lg z-0 focus:shadow focus:outline-none border bg-gray-50 w-full" id="replace"  rows="6"></textarea>
-						<div class="absolute top-2 right-2"> <button class="h-10 w-20 text-white rounded-lg bg-green-500 hover:bg-green-600 btn" data-clipboard-target="#replace" data-toggle="tooltip" title="Copy"><i class="far fa-copy"></i> Copiar</button> </div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-
-	<script>
-		function inputInit() {
-			let input = document.getElementById('entrada').value;
-			toReplace(input);
-		}
-
-		function toReplace($value) {
-			console.log('replace');
-			document.getElementById('replace').innerHTML = $value.normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[^a-zA-Z0-9 ]/g, '');
-		}
-		
-		var clipboard = new ClipboardJS('.btn');
-
-		clipboard.on('success', function(e) {
-			console.log(e);
-			alert('Copiado para área de transferência!');
-
-		});
-
-		clipboard.on('error', function(e) {
-			console.log(e);
-		});
-	</script>
-</body>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="/src/style.css" rel="stylesheet" />
+    <title>PureText</title>
+  </head>
+  <body>
+    <div id="app"></div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
 </html>
